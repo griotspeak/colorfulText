@@ -21,6 +21,7 @@
 		32BDEFCF18B5391700BFD09B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32BDEFB118B5391700BFD09B /* UIKit.framework */; };
 		32BDEFD718B5391700BFD09B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32BDEFD518B5391700BFD09B /* InfoPlist.strings */; };
 		32BDEFD918B5391700BFD09B /* ColorfulTextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BDEFD818B5391700BFD09B /* ColorfulTextTests.m */; };
+		32BDEFE418B5395400BFD09B /* CLFLTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BDEFE318B5395400BFD09B /* CLFLTextStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		32BDEFD418B5391700BFD09B /* ColorfulTextTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ColorfulTextTests-Info.plist"; sourceTree = "<group>"; };
 		32BDEFD618B5391700BFD09B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32BDEFD818B5391700BFD09B /* ColorfulTextTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorfulTextTests.m; sourceTree = "<group>"; };
+		32BDEFE218B5395400BFD09B /* CLFLTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFLTextStorage.h; sourceTree = "<group>"; };
+		32BDEFE318B5395400BFD09B /* CLFLTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFLTextStorage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				32BDEFBF18B5391700BFD09B /* Main.storyboard */,
 				32BDEFC218B5391700BFD09B /* CLFLViewController.h */,
 				32BDEFC318B5391700BFD09B /* CLFLViewController.m */,
+				32BDEFE218B5395400BFD09B /* CLFLTextStorage.h */,
+				32BDEFE318B5395400BFD09B /* CLFLTextStorage.m */,
 				32BDEFC518B5391700BFD09B /* Images.xcassets */,
 				32BDEFB418B5391700BFD09B /* Supporting Files */,
 			);
@@ -253,6 +258,7 @@
 				32BDEFBA18B5391700BFD09B /* main.m in Sources */,
 				32BDEFC418B5391700BFD09B /* CLFLViewController.m in Sources */,
 				32BDEFBE18B5391700BFD09B /* CLFLAppDelegate.m in Sources */,
+				32BDEFE418B5395400BFD09B /* CLFLTextStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
