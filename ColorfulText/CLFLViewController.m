@@ -8,6 +8,7 @@
 
 #import "CLFLViewController.h"
 #import "CLFLTextStorage.h"
+#import "CLFLLayoutManager.h"
 
 @interface CLFLViewController ()
 @property (nonatomic, weak) UITextView *textView;
@@ -19,12 +20,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CGRect textViewRect = CGRectInset(self.view.bounds, 12., 12.);
+    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(6, 6, 6, 6);
+    CGRect textViewRect = UIEdgeInsetsInsetRect(self.view.bounds, edgeInsets);
 
     CLFLTextStorage *textStorage = [[CLFLTextStorage alloc] init];
 
 
-    NSLayoutManager *layoutManager = [NSLayoutManager new];
+    CLFLLayoutManager *layoutManager = [[CLFLLayoutManager alloc] init];
+    layoutManager.edgeInsets = edgeInsets;
     [textStorage addLayoutManager: layoutManager];
 
     NSTextContainer *textContainer = [NSTextContainer new];
