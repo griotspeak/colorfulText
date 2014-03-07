@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 TJ Usiyan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface CLFLLayoutManager : NSLayoutManager
 

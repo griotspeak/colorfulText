@@ -10,6 +10,15 @@
 
 @implementation CLFLLayoutManager
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.allowsNonContiguousLayout = YES;
+    }
+    return self;
+}
+
 - (void)drawBackgroundForGlyphRange:(NSRange)glyphsToShow
                             atPoint:(CGPoint)origin {
     CGRect rect = CGRectIntegral([self boundingRectForGlyphRange:glyphsToShow

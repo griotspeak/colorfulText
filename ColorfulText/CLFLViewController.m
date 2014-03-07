@@ -9,9 +9,11 @@
 #import "CLFLViewController.h"
 #import "CLFLTextStorage.h"
 #import "CLFLLayoutManager.h"
+#import "CLFLLayoutManagerDelegate.h"
 
 @interface CLFLViewController ()
 @property (nonatomic, weak) UITextView *textView;
+@property (nonatomic, strong) CLFLLayoutManagerDelegate *layoutManagerDelegate;
 @property (nonatomic, weak) NSTextStorage *textStorage;
 @end
 
@@ -26,11 +28,13 @@
     CLFLTextStorage *textStorage = [[CLFLTextStorage alloc] init];
 
 
+    self.layoutManagerDelegate = [[CLFLLayoutManagerDelegate alloc] init];
     CLFLLayoutManager *layoutManager = [[CLFLLayoutManager alloc] init];
+    layoutManager.delegate = self.layoutManagerDelegate;
     layoutManager.edgeInsets = edgeInsets;
     [textStorage addLayoutManager: layoutManager];
 
-    NSTextContainer *textContainer = [NSTextContainer new];
+    NSTextContainer *textContainer = [[NSTextContainer alloc] init];
     [layoutManager addTextContainer: textContainer];
 
     UITextView *textView = [[UITextView alloc] initWithFrame:textViewRect
