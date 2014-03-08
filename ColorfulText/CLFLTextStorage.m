@@ -12,7 +12,10 @@
 @interface CLFLTextStorage ()
 @property (nonatomic, strong) NSMutableAttributedString *privateAttributedString;
 @property (nonatomic, strong) NSDataDetector *linkDetector;
+@property (nonatomic, strong) NSRegularExpression *numberDetector;
 @end
+
+NSString * const CLFLPhoneNumberAttributeName = @"CLFLPhoneNumberAttributeName";
 
 @implementation CLFLTextStorage
 
@@ -30,6 +33,16 @@
                                                            error:&error];
 
         if (_linkDetector == nil) {
+            @throw [NSException exceptionWithName:@"CLFLUnexpectedStateException"
+                                           reason:[NSString stringWithFormat:@"Text Storage error parsing the string. Error:%@", error]
+                                         userInfo:nil];
+        }
+
+        _numberDetector = [NSRegularExpression regularExpressionWithPattern:@"[0-9]"
+                                                                    options:0
+                                                                      error:&error];
+
+        if (_numberDetector == nil) {
             @throw [NSException exceptionWithName:@"CLFLUnexpectedStateException"
                                            reason:[NSString stringWithFormat:@"Text Storage error parsing the string. Error:%@", error]
                                          userInfo:nil];
@@ -102,6 +115,16 @@
                                                                                 alpha:1.0]
                                                           range:result.range];
                                          }];
+
+        [self.numberDetector enumerateMatchesInString:string
+                                                   options:0
+                                                     range:NSMakeRange(0, string.length)
+                                                usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                                                    [self addAttribute:CLFLPhoneNumberAttributeName
+                                                                 value:@YES
+                                                                 range:result.range];
+                                                }];
+
 
     }
     @catch (NSException *exception) {

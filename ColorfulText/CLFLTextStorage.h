@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const CLFLPhoneNumberAttributeName;
+
 @interface CLFLTextStorage : NSTextStorage
 
 @end

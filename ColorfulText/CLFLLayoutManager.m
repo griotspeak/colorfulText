@@ -22,7 +22,7 @@
 - (void)drawBackgroundForGlyphRange:(NSRange)glyphsToShow
                             atPoint:(CGPoint)origin {
     CGRect rect = CGRectIntegral([self boundingRectForGlyphRange:glyphsToShow
-                                  inTextContainer:self.textContainers[0]]);
+                                                 inTextContainer:[self.textContainers firstObject]]);
     rect.origin = origin;
     rect.origin.x += self.edgeInsets.left;
     rect = CGRectIntegral(CGRectInset(rect, -2, 0));

@@ -6,14 +6,13 @@
 //  Copyright (c) 2014 TJ Usiyan. All rights reserved.
 //
 
+@import CoreText;
 #import "CLFLViewController.h"
 #import "CLFLTextStorage.h"
 #import "CLFLLayoutManager.h"
-#import "CLFLLayoutManagerDelegate.h"
 
-@interface CLFLViewController ()
+@interface CLFLViewController () <NSLayoutManagerDelegate>
 @property (nonatomic, weak) UITextView *textView;
-@property (nonatomic, strong) CLFLLayoutManagerDelegate *layoutManagerDelegate;
 @property (nonatomic, weak) NSTextStorage *textStorage;
 @end
 
@@ -27,10 +26,8 @@
 
     CLFLTextStorage *textStorage = [[CLFLTextStorage alloc] init];
 
-
-    self.layoutManagerDelegate = [[CLFLLayoutManagerDelegate alloc] init];
     CLFLLayoutManager *layoutManager = [[CLFLLayoutManager alloc] init];
-    layoutManager.delegate = self.layoutManagerDelegate;
+    layoutManager.delegate = self;
     layoutManager.edgeInsets = edgeInsets;
     [textStorage addLayoutManager: layoutManager];
 
@@ -47,7 +44,43 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
 
+- (NSRange)makeRangeWithCharIndexes:(NSUInteger const *)charIndexes
+                         glyphRange:(NSRange)glyphRange {
+    return NSMakeRange(*charIndexes, charIndexes[glyphRange.length - 1] - charIndexes[0] + 1);
+}
+
+- (NSUInteger)layoutManager:(NSLayoutManager *)layoutManager
+       shouldGenerateGlyphs:(const CGGlyph *)glyphs
+                 properties:(const NSGlyphProperty *)props
+           characterIndexes:(const NSUInteger *)charIndexes
+                       font:(UIFont *)aFont
+              forGlyphRange:(NSRange)glyphRange
+{
+
+    for (int i = 0; i < glyphRange.length; i++) {
+        NSDictionary *attributes = [self.textStorage attributesAtIndex:charIndexes[i]
+                                                        effectiveRange:NULL];
+        if ([attributes[CLFLPhoneNumberAttributeName] isEqual:@YES]) {
+            const size_t bufferLength = 2;
+
+            CGGlyph *glyphBuffer = malloc(sizeof(CGGlyph) * bufferLength);
+            NSGlyphProperty *propsBuffer = malloc(sizeof(NSGlyphProperty) * bufferLength);
+            UTF16Char bullet = 0x2022; // obviously.
+            if (CTFontGetGlyphsForCharacters((CTFontRef)aFont, &bullet, (CGGlyph *)(glyphs + i), 1)) {
+                [layoutManager setGlyphs:glyphBuffer
+                              properties:propsBuffer
+                        characterIndexes:charIndexes + i
+                                    font:aFont
+                           forGlyphRange:NSMakeRange(glyphRange.location + i, glyphRange.length - i)];
+            }
+
+            free(glyphBuffer);
+            free(propsBuffer);
+        }
+    }
+    return 0;
 }
 
 @end

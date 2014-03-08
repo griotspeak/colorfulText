@@ -23,7 +23,6 @@
 		32BDEFD918B5391700BFD09B /* ColorfulTextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BDEFD818B5391700BFD09B /* ColorfulTextTests.m */; };
 		32BDEFE418B5395400BFD09B /* CLFLTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BDEFE318B5395400BFD09B /* CLFLTextStorage.m */; };
 		32BDEFE718B53C6C00BFD09B /* CLFLLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BDEFE618B53C6C00BFD09B /* CLFLLayoutManager.m */; };
-		32BDEFEA18B573D000BFD09B /* CLFLLayoutManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BDEFE918B573D000BFD09B /* CLFLLayoutManagerDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +59,6 @@
 		32BDEFE318B5395400BFD09B /* CLFLTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFLTextStorage.m; sourceTree = "<group>"; };
 		32BDEFE518B53C6C00BFD09B /* CLFLLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFLLayoutManager.h; sourceTree = "<group>"; };
 		32BDEFE618B53C6C00BFD09B /* CLFLLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFLLayoutManager.m; sourceTree = "<group>"; };
-		32BDEFE818B573D000BFD09B /* CLFLLayoutManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFLLayoutManagerDelegate.h; sourceTree = "<group>"; };
-		32BDEFE918B573D000BFD09B /* CLFLLayoutManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFLLayoutManagerDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +127,6 @@
 				32BDEFE318B5395400BFD09B /* CLFLTextStorage.m */,
 				32BDEFE518B53C6C00BFD09B /* CLFLLayoutManager.h */,
 				32BDEFE618B53C6C00BFD09B /* CLFLLayoutManager.m */,
-				32BDEFE818B573D000BFD09B /* CLFLLayoutManagerDelegate.h */,
-				32BDEFE918B573D000BFD09B /* CLFLLayoutManagerDelegate.m */,
 				32BDEFC518B5391700BFD09B /* Images.xcassets */,
 				32BDEFB418B5391700BFD09B /* Supporting Files */,
 			);
@@ -270,7 +265,6 @@
 				32BDEFBE18B5391700BFD09B /* CLFLAppDelegate.m in Sources */,
 				32BDEFE718B53C6C00BFD09B /* CLFLLayoutManager.m in Sources */,
 				32BDEFE418B5395400BFD09B /* CLFLTextStorage.m in Sources */,
-				32BDEFEA18B573D000BFD09B /* CLFLLayoutManagerDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +475,7 @@
 				32BDEFDE18B5391700BFD09B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32BDEFDF18B5391700BFD09B /* Build configuration list for PBXNativeTarget "ColorfulTextTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +484,7 @@
 				32BDEFE118B5391700BFD09B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
