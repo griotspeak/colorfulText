@@ -38,6 +38,7 @@
                                                textContainer:textContainer];
     [self.view addSubview:textView];
     self.textView = textView;
+    self.textView.font = [UIFont systemFontOfSize:45];
     self.textStorage = textStorage;
 }
 
