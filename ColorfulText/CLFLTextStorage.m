@@ -97,7 +97,6 @@ NSString * const CLFLPhoneNumberAttributeName = @"CLFLPhoneNumberAttributeName";
 #pragma mark -
 
 - (void)processEditing {
-    [super processEditing];
     NSString *string = self.string;
 
     NSRange paragaphRange = [string paragraphRangeForRange:self.editedRange];
@@ -133,6 +132,7 @@ NSString * const CLFLPhoneNumberAttributeName = @"CLFLPhoneNumberAttributeName";
     @finally {
         // nothing to do
     }
+    [super processEditing]; // call to super last.
 }
 
 @end
