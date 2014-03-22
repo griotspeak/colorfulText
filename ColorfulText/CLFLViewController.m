@@ -59,11 +59,15 @@
                        font:(UIFont *)aFont
               forGlyphRange:(NSRange)glyphRange
 {
-
+    NSRange effectiveRange;
     for (int i = 0; i < glyphRange.length; i++) {
         NSDictionary *attributes = [self.textStorage attributesAtIndex:charIndexes[i]
-                                                        effectiveRange:NULL];
+                                                        effectiveRange:&effectiveRange];
+        NSLog(@"charIndex[%d]:%lu", i, (unsigned long)charIndexes[i]);
+        NSLog(@"glyphRange:%@", NSStringFromRange(glyphRange));
+        NSLog(@"effectiveRange:%@", NSStringFromRange(effectiveRange));
         if ([attributes[CLFLPhoneNumberAttributeName] isEqual:@YES]) {
+            NSLog(@"number found");
             const size_t bufferLength = 2;
 
             CGGlyph *glyphBuffer = malloc(sizeof(CGGlyph) * bufferLength);
@@ -81,6 +85,7 @@
             free(propsBuffer);
         }
     }
+    NSLog(@"--------------------------");
     return 0;
 }
 

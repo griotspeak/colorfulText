@@ -102,11 +102,14 @@ NSString * const CLFLPhoneNumberAttributeName = @"CLFLPhoneNumberAttributeName";
     NSRange paragaphRange = [string paragraphRangeForRange:self.editedRange];
     [self removeAttribute:NSBackgroundColorAttributeName
                     range:paragaphRange];
+    [self removeAttribute:CLFLPhoneNumberAttributeName
+                    range:paragaphRange];
     @try {
         [self.linkDetector enumerateMatchesInString:string
                                             options:0
                                               range:NSMakeRange(0, string.length)
                                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                                             NSLog(@"link detector result: %@", result);
                                              [self addAttribute:NSBackgroundColorAttributeName
                                                           value:[UIColor colorWithRed:0.9
                                                                                 green:0.9
@@ -119,6 +122,7 @@ NSString * const CLFLPhoneNumberAttributeName = @"CLFLPhoneNumberAttributeName";
                                                    options:0
                                                      range:NSMakeRange(0, string.length)
                                                 usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                                                    NSLog(@"number detector result: %@", result);
                                                     [self addAttribute:CLFLPhoneNumberAttributeName
                                                                  value:@YES
                                                                  range:result.range];

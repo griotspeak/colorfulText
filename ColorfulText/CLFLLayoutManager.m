@@ -19,17 +19,17 @@
     return self;
 }
 
-- (void)drawBackgroundForGlyphRange:(NSRange)glyphsToShow
-                            atPoint:(CGPoint)origin {
-    CGRect rect = CGRectIntegral([self boundingRectForGlyphRange:glyphsToShow
-                                                 inTextContainer:[self.textContainers firstObject]]);
-    rect.origin = origin;
-    rect.origin.x += self.edgeInsets.left;
-    rect = CGRectIntegral(CGRectInset(rect, -2, 0));
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect
-                                                    cornerRadius:3.0];
-    [[UIColor greenColor] set];
-    [path fill];
-}
+//- (void)drawBackgroundForGlyphRange:(NSRange)glyphsToShow
+//                            atPoint:(CGPoint)origin {
+//    CGRect rect = CGRectIntegral([self boundingRectForGlyphRange:glyphsToShow
+//                                                 inTextContainer:[self.textContainers firstObject]]);
+//    rect.origin = origin;
+//    rect.origin.x += self.edgeInsets.left;
+//    rect = CGRectIntegral(CGRectInset(rect, -2, 0));
+//    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect
+//                                                    cornerRadius:3.0];
+//    [[UIColor greenColor] set];
+//    [path fill];
+//}
 
 @end
