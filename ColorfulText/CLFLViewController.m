@@ -68,21 +68,10 @@
         NSLog(@"effectiveRange:%@", NSStringFromRange(effectiveRange));
         if ([attributes[CLFLPhoneNumberAttributeName] isEqual:@YES]) {
             NSLog(@"number found");
-            const size_t bufferLength = 2;
 
-            CGGlyph *glyphBuffer = malloc(sizeof(CGGlyph) * bufferLength);
-            NSGlyphProperty *propsBuffer = malloc(sizeof(NSGlyphProperty) * bufferLength);
             UTF16Char bullet = 0x2022; // obviously.
-            if (CTFontGetGlyphsForCharacters((CTFontRef)aFont, &bullet, (CGGlyph *)(glyphs + i), 1)) {
-                [layoutManager setGlyphs:glyphBuffer
-                              properties:propsBuffer
-                        characterIndexes:charIndexes + i
-                                    font:aFont
-                           forGlyphRange:NSMakeRange(glyphRange.location + i, glyphRange.length - i)];
-            }
-
-            free(glyphBuffer);
-            free(propsBuffer);
+            // this line should not accomplish the thing that it accomplishes.
+            CTFontGetGlyphsForCharacters((CTFontRef)aFont, &bullet, (CGGlyph *)(glyphs + i), 1);
         }
     }
     NSLog(@"--------------------------");
